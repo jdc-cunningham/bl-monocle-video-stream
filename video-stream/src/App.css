@@ -1,15 +1,3 @@
-/* src/App.css */
-
-body {
-  background-color: #282828;
-}
-
-body * {
-  box-sizing: border-box;
-  color: white;
-  font-family: 'Roboto', sans-serif;
-}
-
 .editor {
   display: flex;
   align-items: flex-start;
@@ -23,9 +11,39 @@ body * {
 }
 
 .editor .right-panel {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
   width: 35%;
-  border-left: 1px solid #ccc;
   height: 100vh;
+}
+
+.editor .right-panel .video-stream {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.editor .right-panel .video {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45%;
+  width: 100%;
+  color: #dcdcdc;
+  font-size: 1.25rem;
+}
+
+.editor .right-panel .Relay {
+  height: 55%;
+  width: 100%;
+}
+
+.phone .right-panel .Relay {
+  display: none;
 }
 
 .phone .left-panel {
