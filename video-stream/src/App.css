@@ -1,0 +1,73 @@
+/* src/App.css */
+
+body {
+  background-color: #282828;
+}
+
+body * {
+  box-sizing: border-box;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+.editor {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.editor .left-panel {
+  width: 65%;
+  height: 100vh;
+}
+
+.editor .right-panel {
+  width: 35%;
+  border-left: 1px solid #ccc;
+  height: 100vh;
+}
+
+.phone .left-panel {
+  display: none;
+}
+
+.phone .checkbox-group {
+  display: none;
+}
+
+.phone .change-camera-btn {
+  display: none;
+}
+
+.phone .editor {
+  display: none;
+}
+
+.OTPublisherContainer {
+  width: 100vw !important;
+  height: auto;
+}
+
+.connectionStatus {
+  padding-top: 20px;
+  margin-left: 5%;
+  font-size: 1.5em;
+}
+
+.subscriber {
+  margin-left: 10%;
+}
+
+.publisher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  transform: rotate(0deg);
+}
+
+#error {
+  color: red;
+}

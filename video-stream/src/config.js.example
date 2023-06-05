@@ -1,0 +1,7 @@
+const config = {
+  API_KEY: '',
+  SESSION_ID: '',
+  TOKEN: ''
+};
+
+export default config;
