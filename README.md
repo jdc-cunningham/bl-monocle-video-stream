@@ -1,9 +1,15 @@
 ### About
 
-Wanted to find the easiest way to get a video stream going
+The intent is to stream a camera feed watching the monocle display.
 
-This works but requires ssl, which is fine...
+In this case a phone looking at the monocle using a mount like below.
 
-but not something just anyone can use
+<img src="./mounts.jpg">
 
-I will integrate it into a complete "editor"
+The issue here is I'm not able to select the macro camera which would be better suited using web `enumerateDevices()`
+
+Anyway I have working example on the [vonage](github.com/jdc-cunningham/bl-monocle-video-stream/tree/vonage) branch which is a paid service.
+
+They do all the heavy lifting of video for you but you pay for it.
+
+I have not put the time in to setup WebRTC myself from scratch.
