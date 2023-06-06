@@ -35,7 +35,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    if (window.location.href.indexOf('#phone') !== -1) {
+    if (window.location.href.indexOf('phone') !== -1) {
       this.setState({isPhone: true});
     }
   }
@@ -52,7 +52,7 @@ class App extends React.Component {
 
     const cleanMsg = msg.replace('relay: OK' , '');
 
-    const curRelayData = this.state.relayData + '\n' + cleanMsg;
+    const curRelayData = cleanMsg + '\n' + this.state.relayData;
 
     this.setState({relayData: curRelayData});
 
@@ -83,21 +83,21 @@ class App extends React.Component {
         <div className="right-panel">
           <div className="video-stream">
             <div className="video">
-              {!this.connected && "video area"}
-            {/* <OTSession
-              apiKey={this.props.apiKey}
-              sessionId={this.props.sessionId}
-              token={this.props.token}
-              eventHandlers={this.sessionEvents}
-              onError={this.onError}
-              >
-              {this.state.error ? <div id="error">{this.state.error}</div> : null}
-              <ConnectionStatus connected={this.state.connected} />
-              <Publisher />
-              <OTStreams>
-                <Subscriber />
-              </OTStreams>
-            </OTSession> */}
+              {!this.state.connected && "video area"}
+              <OTSession
+                apiKey={this.props.apiKey}
+                sessionId={this.props.sessionId}
+                token={this.props.token}
+                eventHandlers={this.sessionEvents}
+                onError={this.onError}
+                >
+                {this.state.error ? <div id="error">{this.state.error}</div> : null}
+                <ConnectionStatus connected={this.state.connected} />
+                <Publisher />
+                <OTStreams>
+                  <Subscriber />
+                </OTStreams>
+              </OTSession>
             </div>
             <Relay className="relay" relayData={this.state.relayData} />
           </div>

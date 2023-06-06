@@ -42,6 +42,38 @@
   width: 100%;
 }
 
+.editor .publisher {
+  display: none;
+}
+
+.editor .OTPublisherContainer {
+  display: none;
+}
+
+.editor .video {
+  position: relative;
+}
+
+.editor .video .connectionStatus {
+  display: none;
+}
+
+.editor .OTSubscriberContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.editor .subscriber .checkbox-group {
+  display: none;
+}
+
+.phone .OTPublisherContainer {
+  transform: rotate(0deg);
+}
+
 .phone .right-panel .Relay {
   display: none;
 }
