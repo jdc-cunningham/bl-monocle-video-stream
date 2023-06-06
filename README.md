@@ -1,5 +1,7 @@
 ### About
 
+<video src="./video-stream.mp4"></video>
+
 This is a web-based video stream **using your phone**.
 
 In this case the easiest way (without undrestanding WebRTC) to get this to work is to use a paid for service.
