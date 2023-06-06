@@ -1,6 +1,6 @@
 ### About
 
-<video src="./video-stream.mp4"></video>
+https://github.com/jdc-cunningham/bl-monocle-video-stream/assets/11015467/2ed0c962-6957-410d-929d-2a87ec9df78a
 
 This is a web-based video stream **using your phone**.
 
