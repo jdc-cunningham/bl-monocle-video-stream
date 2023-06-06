@@ -18,7 +18,10 @@ class App extends React.Component {
       isPhone: false,
       relayData: '',
       bleConnected: false,
-      writing: false
+      writing: false,
+      startStream: false,
+      cameras: [],
+      activeCameraId: '',
     };
 
     this.sessionEvents = {
@@ -32,12 +35,41 @@ class App extends React.Component {
 
     this.setWriting = this.setWriting.bind(this); // forgot about this stuff
     this.monocleMessaging = this.monocleMessaging.bind(this);
+    this.setCamera = this.setCamera.bind(this);
   };
 
   componentDidMount() {
     if (window.location.href.indexOf('phone') !== -1) {
       this.setState({isPhone: true});
     }
+
+    // check available cameras
+    navigator.mediaDevices
+    .enumerateDevices()
+    .then((devices) => {
+      const avail = [];
+
+      devices.forEach((device) => {
+        if (device?.kind.indexOf('video') !== -1) {
+          avail.push({
+            name: device.label.substring(0, 16),
+            id: device.deviceId
+          });
+        }
+      });
+
+      this.setState({cameras: avail});
+    })
+    .catch((err) => {
+      console.error(`${err.name}: ${err.message}`);
+    });
+  }
+
+  setCamera(camId) {
+    this.setState({
+      activeCameraId: camId,
+      startStream: true
+    })
   }
 
   setWriting(writing) {
@@ -84,7 +116,14 @@ class App extends React.Component {
           <div className="video-stream">
             <div className="video">
               {!this.state.connected && "video area"}
-              <OTSession
+              {(this.state.isPhone && !this.state.startStream && this.state.cameras.length > 0) && <select>
+                {
+                  this.state.cameras.map((cam, index) => (
+                    <option key={index} value={cam.id} onSelect={() => this.setCamera(cam.id)}>{cam.name}</option>  
+                  ))
+                }  
+              </select>}
+              {(this.state.isPhone && this.state.startStream) && <OTSession
                 apiKey={this.props.apiKey}
                 sessionId={this.props.sessionId}
                 token={this.props.token}
@@ -93,11 +132,11 @@ class App extends React.Component {
                 >
                 {this.state.error ? <div id="error">{this.state.error}</div> : null}
                 <ConnectionStatus connected={this.state.connected} />
-                <Publisher />
+                <Publisher camId={this.state.camId} />
                 <OTStreams>
                   <Subscriber />
                 </OTStreams>
-              </OTSession>
+              </OTSession>}
             </div>
             <Relay className="relay" relayData={this.state.relayData} />
           </div>

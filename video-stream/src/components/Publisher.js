@@ -45,7 +45,7 @@ class Publisher extends React.Component {
           properties={{
             publishAudio: this.state.audio,
             publishVideo: this.state.video,
-            videoSource: this.state.videoSource === 'screen' ? 'screen' : undefined,
+            videoSource: this.props.camId || 'screen',
             facingMode: 'environment',
             fitMode: 'contain'
           }}
